@@ -1,4 +1,23 @@
+password = input("Enter the Password")
 
+length = len(password) >= 8
+lower = any(ch.islower() for ch in password)
+upper = any(ch.isupper() for ch in password)
+digit = any(ch.isdigit() for ch in password)
+special = any(ch in "!@#$%^&*()_+-=" for ch in password)
+
+strength = length + lower + upper + digit + special
+
+if strength <= 2:
+    code = "Weak Password"
+elif strength == 3 or strength == 4:
+    code = "Moderate Password"
+elif strength == 5:
+    code = "Strong Password"
+else:
+    code = "Invalid Input"
+
+print("Password comes under the category of", code)
 # Password Strength Checker
 
 This is a simple Python CLI (Command Line Interface) project that checks the strength of a password based on the following rules:
